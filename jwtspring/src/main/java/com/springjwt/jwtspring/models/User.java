@@ -19,10 +19,10 @@ import java.util.Set;
 @Entity
 @Table(	name = "users", 
 		uniqueConstraints = { 
-			@UniqueConstraint(columnNames = "username"),
+			@UniqueConstraint(columnNames = "firstname"),
 			@UniqueConstraint(columnNames = "email") 
 		})
-public class User {
+public class User extends AuditModel {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -88,6 +88,23 @@ public class User {
 		this.state = state;
 		this.country = country;
 		this.pin = pin;
+	}
+
+	public User(Long id, String firstname, String lastname, String dateofbirth, String gender, String email,
+			String mobileno, String address, String city, String state, String country, String pin, Set<Role> roles) {
+		this.id = id;
+		this.firstname = firstname;
+		this.lastname = lastname;
+		this.dateofbirth = dateofbirth;
+		this.gender = gender;
+		this.email = email;
+		this.mobileno = mobileno;
+		this.address = address;
+		this.city = city;
+		this.state = state;
+		this.country = country;
+		this.pin = pin;
+		this.roles = roles;
 	}
 
 	public String getFirstname() {
